@@ -40,7 +40,7 @@ To run this project, follow these steps:
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/your-repository-name.git
+    (https://github.com/charmainedlamini/PROJECT-2)
     ```
 2.  **Open in NetBeans**:
       * Open Apache NetBeans IDE.
