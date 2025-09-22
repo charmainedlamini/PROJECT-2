@@ -96,7 +96,7 @@ public class RoomApplication extends JFrame {
             JOptionPane.showMessageDialog(this, "Application Submitted & saved!");
             dispose();
             new ApplicationSubmitted().setVisible(true);
-
+        f;
         });
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,3 +115,4 @@ public class RoomApplication extends JFrame {
     }
 
 }
+
