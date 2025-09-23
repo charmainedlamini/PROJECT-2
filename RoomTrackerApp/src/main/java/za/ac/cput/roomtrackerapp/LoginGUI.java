@@ -10,10 +10,16 @@ package za.ac.cput.roomtrackerapp;
  */
 import RTA.Domain.AuthenicateSys;
 import java.awt.*;
+import java.io.*;
+import javax.swing.*;
 
 import javax.swing.*;
 
 public class LoginGUI extends JFrame {
+     private static final String REMEMBER_FILE = "rememberme.txt";
+    JTextField emailField;
+    JPasswordField passField;
+    JCheckBox rmb;
 
     public LoginGUI() {
         super("Login - Cape Peninsula University Of Technology");
@@ -46,7 +52,7 @@ public class LoginGUI extends JFrame {
         emailLabel.setBounds(80, 130, 100, 25);
         panel.add(emailLabel);
 
-        JTextField emailField = new JTextField();
+        emailField = new JTextField();
         emailField.setBounds(200, 130, 200, 25);
         panel.add(emailField);
 
@@ -54,10 +60,14 @@ public class LoginGUI extends JFrame {
         passLabel.setBounds(80, 170, 100, 25);
         panel.add(passLabel);
 
-        JPasswordField passField = new JPasswordField();
+        passField = new JPasswordField();
         passField.setBounds(200, 170, 200, 25);
         panel.add(passField);
 
+        JCheckBox rmb = new JCheckBox("Remember Me");
+        rmb.setBounds(200, 200, 150, 25);
+        panel.add(rmb);
+        
         JButton loginButton = new JButton("Login");
         loginButton.setBackground(new Color(30, 100, 200));
         loginButton.setForeground(Color.WHITE);
@@ -84,6 +94,8 @@ public class LoginGUI extends JFrame {
                 }
             }
         });
+        panel.add(forgtLabel);
+        LoadCredentials();
         loginButton.addActionListener(e -> {
             String email = emailField.getText();
             String password = new String(passField.getPassword());
@@ -110,5 +122,42 @@ public class LoginGUI extends JFrame {
         setVisible(true);
 
     }
+    private void saveCredentials(String email, String password) {
+        try ( BufferedWriter writer = new BufferedWriter(new FileWriter(REMEMBER_FILE))) {
+            writer.write(email + "\n");
+            writer.write(password + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void LoadCredentials() {
+        File file = new File(REMEMBER_FILE);
+        if (file.exists()) {
+            try ( BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String email = reader.readLine();
+                String password = reader.readLine();
+                if (email != null) {
+                    emailField.setText(email);
+                }
+                if (password != null) {
+                    passField.setText(password);
+                }
+                rmb.setSelected(true);
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+
+    public void clearCredentials() {
+        File file = new File(REMEMBER_FILE);
+        if (file.exists()) {
+            file.delete();
+        }
+
+    }
 
 }
+
