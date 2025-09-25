@@ -18,7 +18,7 @@ public class RoomApplication extends JFrame {
     private JPanel pnlSouth;
     private JButton btnUpload, btnproof, btnadd, btnApply;
     private JComboBox<String> cbostatus, cbotype;
-    private JComboBox<String> cboRoomSelection;
+    private JComboBox<String> cboResidence;
     private JTextField txtSID, txtstart;
     private JLabel idpath, nsfaspath, proofpath;
 
@@ -37,8 +37,8 @@ public class RoomApplication extends JFrame {
         JLabel lblroom = new JLabel("Room Type: ");
         cbotype = new JComboBox<>(new String[]{"Select", "Single", "Double", "Sharing"});
 
-        JLabel lblRoomSelection = new JLabel("Select Room:");
-        cboRoomSelection = new JComboBox<>(new String[]{"Select", "Room 101", "Room 102", "Room 103", "Room 104"});
+        JLabel lblRes = new JLabel("Select Residence:");
+        cboResidence = new JComboBox<>(new String[]{"Select", "NMJ", "VOGUE", "CAPE STATION", "CAPE SUITES", "CATSVILLE"});
 
         JLabel lbldate = new JLabel("Start Date");
         txtstart = new JTextField();
@@ -122,6 +122,7 @@ public class RoomApplication extends JFrame {
     }
 
 }
+
 
 
 
