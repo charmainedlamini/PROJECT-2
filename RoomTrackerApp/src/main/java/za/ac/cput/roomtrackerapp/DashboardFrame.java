@@ -7,6 +7,7 @@ package za.ac.cput.roomtrackerapp;
 /**
  *
  * @author musot
+ * @author Charmaine Dlamini
  */
 import RTA.Process.CheckRoomAvailability;
 import RTA.Process.CurrentRoomFrame;
@@ -229,3 +230,4 @@ public class DashboardFrame extends JFrame {
     }
 
 }
+
