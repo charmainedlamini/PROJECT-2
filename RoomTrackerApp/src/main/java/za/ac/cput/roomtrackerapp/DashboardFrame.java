@@ -12,6 +12,7 @@ package za.ac.cput.roomtrackerapp;
 import RTA.Process.CheckRoomAvailability;
 import RTA.Process.CurrentRoomFrame;
 import RTA.Process.RoomApplication;
+import RTA.model.LoginSession;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -98,6 +99,7 @@ public class DashboardFrame extends JFrame {
         btnLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // I fixed the logout button when you logout it will go back to the welcome frame
                 // Show a confirmation dialog
                 int confirmed = JOptionPane.showConfirmDialog(
                         null,
@@ -105,11 +107,10 @@ public class DashboardFrame extends JFrame {
                         "Logout Confirmation",
                         JOptionPane.YES_NO_OPTION
                 );
-
                 // If the user confirmed, show a message dialog and then dispose of the frame
                 if (confirmed == JOptionPane.YES_OPTION) {
-                    JOptionPane.showMessageDialog(null, "You have successfully logged out.", "Logout", JOptionPane.INFORMATION_MESSAGE);
-                    dispose(); // Close the current frame
+                    dispose(); // close dashboard
+                    new WelcomeFrame().setVisible(true); // return to welcome frame
                 }
             }
         });
@@ -141,7 +142,18 @@ public class DashboardFrame extends JFrame {
         add(dashboardPanel, BorderLayout.CENTER);
 
         setVisible(true);
+        loadStudentEmail();
     }
+    //also added this method to show email in the dashboard after user logged in
+    // Load the student's email from the login session
+     private void loadStudentEmail() {
+        String email = LoginSession.getEmail(); // get email from session
+            if (email != null && !email.isEmpty()) {
+                emailLabel.setText(email);
+            } else {
+                emailLabel.setText("example@example.com"); // fallback
+    }
+}
 
     private static JPanel createCard(String title, String subtitle, String iconPath) {
         JPanel card = new RoundedPanel();
@@ -230,4 +242,5 @@ public class DashboardFrame extends JFrame {
     }
 
 }
+
 
