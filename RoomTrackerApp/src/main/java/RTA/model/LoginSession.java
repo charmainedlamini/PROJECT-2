@@ -2,6 +2,7 @@ package RTA.model;
 
 /**
  * @author Charmaine
+ * added this class to use it to get the email of the user when they log in
  */
 public class LoginSession {
 
@@ -15,3 +16,4 @@ public class LoginSession {
         return email;
     }
 }
+
