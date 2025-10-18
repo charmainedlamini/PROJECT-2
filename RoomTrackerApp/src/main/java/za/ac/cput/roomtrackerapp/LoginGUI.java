@@ -7,8 +7,11 @@ package za.ac.cput.roomtrackerapp;
 /**
  *
  * @author musot
+ * @author Sabo
+ * @author Charmaine
  */
 import RTA.Domain.AuthenicateSys;
+import RTA.model.LoginSession;
 import java.awt.*;
 import java.io.*;
 import javax.swing.*;
@@ -106,6 +109,10 @@ public class LoginGUI extends JFrame {
                 boolean success = AuthenicateSys.loginUser(email, password);
                 if (success) {
                     JOptionPane.showMessageDialog(this, "Login Successful!");
+                     //Charmaine - i added this example of using a session to store user data which is email so that after the user login in with email
+                     //I will use that email to make it visible in the dashboard
+                     // Store the logged-in email in LoginSession
+                    LoginSession.setEmail(email);
                     dispose();
                     new DashboardFrame();
                 } else {
@@ -160,4 +167,5 @@ public class LoginGUI extends JFrame {
     }
 
 }
+
 
